@@ -44,7 +44,7 @@ def threshold(image, th=None):
         raise ValueError('Must be at 2D image')
 
     if th is None:
-        th = threshold_otsu(image)
+        th = otsu(image)
 
     binarised[image >= th] = 255
     binarised[image < th] = 0
