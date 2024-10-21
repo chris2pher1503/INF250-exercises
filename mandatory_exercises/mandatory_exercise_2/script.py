@@ -13,9 +13,7 @@ plt.figure()
 plt.title("Gray-scale Image")
 plt.imshow(gray_image, cmap='gray')
 
-adjusted_gray_image = exposure.rescale_intensity(gray_image, in_range=(0, 0.8))
-
-smoothed_image = filters.gaussian(adjusted_gray_image, sigma=5)
+smoothed_image = filters.gaussian(gray_image, sigma=0.5)
 plt.figure()
 plt.title("smoothed image")
 plt.imshow(smoothed_image, cmap='gray')
@@ -26,8 +24,8 @@ plt.title("Binary Image")
 plt.imshow(binary_image, cmap='gray')
 
 
-cleaned_image = morphology.remove_small_objects(binary_image, 1000)
-cleaned_image = morphology.remove_small_holes(cleaned_image, 1000)
+cleaned_image = morphology.remove_small_objects(binary_image, 5000)
+cleaned_image = morphology.remove_small_holes(cleaned_image, 5000)
 plt.figure()
 plt.title("Cleaned Binary Image")
 plt.imshow(cleaned_image, cmap='gray')
